@@ -40,13 +40,7 @@ This Flask application integrates weather data retrieval, scenario identificatio
     git clone <https://github.com/VanshGupta-Navs/Enhancing-Flight-Navigation-Mechanism-for-Optimal-Route-Planning-and-Risk-Mitigation>
     ```
 
-2. Navigate to the project directory:
-
-    ```bash
-    cd <project_directory>
-    ```
-
-3. Install dependencies using pip:
+2. Install dependencies using pip:
 
     ```bash
     pip install -r requirements.txt
