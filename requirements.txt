@@ -1,7 +1,6 @@
 flask
 requests
 pandas
-math
 json
 heapq
 logging
