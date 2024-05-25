@@ -338,4 +338,4 @@ def plan_route():
 
 if __name__ == '__main__':
     create_database()  # Ensure the database is created at the start
-    app.run(debug=True)
+    # app.run(debug=True)
