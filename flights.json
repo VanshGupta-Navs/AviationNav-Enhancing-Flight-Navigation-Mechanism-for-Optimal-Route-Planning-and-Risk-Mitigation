@@ -1,0 +1,647 @@
+{
+    "search_metadata":
+    {
+    "id":
+    "66519edcc9990305eace25b2",
+    "status":
+    "Success",
+    "json_endpoint":
+    "https://serpapi.com/searches/a07fd5e63897cf5c/66519edcc9990305eace25b2.json",
+    "created_at":
+    "2024-05-25 08:18:36 UTC",
+    "processed_at":
+    "2024-05-25 08:18:36 UTC",
+    "google_flights_url":
+    "https://www.google.com/travel/flights?hl=en&gl=us&curr=USD&q=Flights+to+IST+from+PEK+on+2024-05-26+through+2024-06-01+First+class",
+    "raw_html_file":
+    "https://serpapi.com/searches/a07fd5e63897cf5c/66519edcc9990305eace25b2.html",
+    "prettify_html_file":
+    "https://serpapi.com/searches/a07fd5e63897cf5c/66519edcc9990305eace25b2.prettify",
+    "total_time_taken":
+    1.30
+    },
+    "search_parameters":
+    {
+    "engine":
+    "google_flights",
+    "hl":
+    "en",
+    "gl":
+    "us",
+    "departure_id":
+    "PEK",
+    "arrival_id":
+    "IST",
+    "outbound_date":
+    "2024-05-26",
+    "return_date":
+    "2024-06-01",
+    "travel_class":
+    4,
+    "currency":
+    "USD"
+    },
+    "best_flights":
+    [
+    {
+    "flights":
+    [
+    {
+    "departure_airport":
+    {
+    "name":
+    "Beijing Capital International Airport",
+    "id":
+    "PEK",
+    "time":
+    "2024-05-26 07:25"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 11:50"
+    },
+    "duration":
+    505,
+    "airplane":
+    "Boeing 777",
+    "airline":
+    "Emirates",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "travel_class":
+    "First Class",
+    "flight_number":
+    "EK 309",
+    "extensions":
+    [
+    "Individual suite",
+    "Wi-Fi for a fee",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 2446 kg"
+    ]
+    },
+    {
+    "departure_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 14:20"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Istanbul Airport",
+    "id":
+    "IST",
+    "time":
+    "2024-05-26 17:55"
+    },
+    "duration":
+    275,
+    "airplane":
+    "Boeing 777",
+    "airline":
+    "Emirates",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "travel_class":
+    "First Class",
+    "flight_number":
+    "EK 121",
+    "ticket_also_sold_by":
+    [
+    "Qantas"
+    ],
+    "extensions":
+    [
+    "Individual suite",
+    "Wi-Fi for a fee",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 1339 kg"
+    ]
+    }
+    ],
+    "layovers":
+    [
+    {
+    "duration":
+    150,
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB"
+    }
+    ],
+    "total_duration":
+    930,
+    "carbon_emissions":
+    {
+    "this_flight":
+    3786000,
+    "typical_for_this_route":
+    3786000,
+    "difference_percent":
+    0
+    },
+    "price":
+    12791,
+    "type":
+    "Round trip",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "departure_token":
+    "WyJDalJJZVVsWFFtcGhOemROV1VsQlIzZ3libEZDUnkwdExTMHRMUzB0TFhaMGNYTXlORUZCUVVGQlIxcFNiblF3VEdseFJFVkJFZ3RGU3pNd09YeEZTekV5TVJvTENOU0lUaEFDR2dOVlUwUTRISERVaUU0PSIsW1siUEVLIiwiMjAyNC0wNS0yNiIsIkRYQiIsbnVsbCwiRUsiLCIzMDkiXSxbIkRYQiIsIjIwMjQtMDUtMjYiLCJJU1QiLG51bGwsIkVLIiwiMTIxIl1dXQ=="
+    }
+    ],
+    "other_flights":
+    [
+    {
+    "flights":
+    [
+    {
+    "departure_airport":
+    {
+    "name":
+    "Beijing Capital International Airport",
+    "id":
+    "PEK",
+    "time":
+    "2024-05-26 00:40"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 05:00"
+    },
+    "duration":
+    500,
+    "airplane":
+    "Boeing 777",
+    "airline":
+    "Emirates",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "travel_class":
+    "First Class",
+    "flight_number":
+    "EK 307",
+    "extensions":
+    [
+    "Individual suite",
+    "Wi-Fi for a fee",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 2475 kg"
+    ],
+    "overnight":
+    true
+    },
+    {
+    "departure_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 13:30"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Istanbul Airport",
+    "id":
+    "IST",
+    "time":
+    "2024-05-26 17:25"
+    },
+    "duration":
+    295,
+    "airplane":
+    "Boeing 737MAX 8 Passenger",
+    "airline":
+    "flydubai",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/FZ.png",
+    "travel_class":
+    "Business Class",
+    "flight_number":
+    "FZ 727",
+    "ticket_also_sold_by":
+    [
+    "Emirates"
+    ],
+    "extensions":
+    [
+    "Lie flat seat",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 318 kg"
+    ]
+    }
+    ],
+    "layovers":
+    [
+    {
+    "duration":
+    510,
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB"
+    }
+    ],
+    "total_duration":
+    1305,
+    "carbon_emissions":
+    {
+    "this_flight":
+    2794000,
+    "typical_for_this_route":
+    3786000,
+    "difference_percent":
+    -26
+    },
+    "price":
+    11869,
+    "type":
+    "Round trip",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+    "departure_token":
+    "WyJDalJJZVVsWFFtcGhOemROV1VsQlIzZ3libEZDUnkwdExTMHRMUzB0TFhaMGNYTXlORUZCUVVGQlIxcFNiblF3VEdseFJFVkJFZ3RGU3pNd04zeEdXamN5TnhvTENQbTNTQkFDR2dOVlUwUTRISEQ1dDBnPSIsW1siUEVLIiwiMjAyNC0wNS0yNiIsIkRYQiIsbnVsbCwiRUsiLCIzMDciXSxbIkRYQiIsIjIwMjQtMDUtMjYiLCJJU1QiLG51bGwsIkZaIiwiNzI3Il1dXQ=="
+    },
+    {
+    "flights":
+    [
+    {
+    "departure_airport":
+    {
+    "name":
+    "Beijing Capital International Airport",
+    "id":
+    "PEK",
+    "time":
+    "2024-05-26 07:25"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 11:50"
+    },
+    "duration":
+    505,
+    "airplane":
+    "Boeing 777",
+    "airline":
+    "Emirates",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "travel_class":
+    "First Class",
+    "flight_number":
+    "EK 309",
+    "extensions":
+    [
+    "Individual suite",
+    "Wi-Fi for a fee",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 2446 kg"
+    ]
+    },
+    {
+    "departure_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 21:15"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Istanbul Airport",
+    "id":
+    "IST",
+    "time":
+    "2024-05-27 01:10"
+    },
+    "duration":
+    295,
+    "airplane":
+    "Boeing 737MAX 8 Passenger",
+    "airline":
+    "flydubai",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/FZ.png",
+    "travel_class":
+    "Business Class",
+    "flight_number":
+    "FZ 755",
+    "ticket_also_sold_by":
+    [
+    "Emirates"
+    ],
+    "extensions":
+    [
+    "Lie flat seat",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 318 kg"
+    ]
+    }
+    ],
+    "layovers":
+    [
+    {
+    "duration":
+    565,
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB"
+    }
+    ],
+    "total_duration":
+    1365,
+    "carbon_emissions":
+    {
+    "this_flight":
+    2765000,
+    "typical_for_this_route":
+    3786000,
+    "difference_percent":
+    -27
+    },
+    "price":
+    11869,
+    "type":
+    "Round trip",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/multi.png",
+    "departure_token":
+    "WyJDalJJZVVsWFFtcGhOemROV1VsQlIzZ3libEZDUnkwdExTMHRMUzB0TFhaMGNYTXlORUZCUVVGQlIxcFNiblF3VEdseFJFVkJFZ3RGU3pNd09YeEdXamMxTlJvTENQbTNTQkFDR2dOVlUwUTRISEQ1dDBnPSIsW1siUEVLIiwiMjAyNC0wNS0yNiIsIkRYQiIsbnVsbCwiRUsiLCIzMDkiXSxbIkRYQiIsIjIwMjQtMDUtMjYiLCJJU1QiLG51bGwsIkZaIiwiNzU1Il1dXQ=="
+    },
+    {
+    "flights":
+    [
+    {
+    "departure_airport":
+    {
+    "name":
+    "Beijing Capital International Airport",
+    "id":
+    "PEK",
+    "time":
+    "2024-05-26 07:25"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 11:50"
+    },
+    "duration":
+    505,
+    "airplane":
+    "Boeing 777",
+    "airline":
+    "Emirates",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "travel_class":
+    "First Class",
+    "flight_number":
+    "EK 309",
+    "extensions":
+    [
+    "Individual suite",
+    "Wi-Fi for a fee",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 2446 kg"
+    ]
+    },
+    {
+    "departure_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-27 14:20"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Istanbul Airport",
+    "id":
+    "IST",
+    "time":
+    "2024-05-27 17:55"
+    },
+    "duration":
+    275,
+    "airplane":
+    "Boeing 777",
+    "airline":
+    "Emirates",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "travel_class":
+    "Business Class",
+    "flight_number":
+    "EK 121",
+    "extensions":
+    [
+    "Angled flat seat",
+    "Wi-Fi for a fee",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 1001 kg"
+    ]
+    }
+    ],
+    "layovers":
+    [
+    {
+    "duration":
+    1590,
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "overnight":
+    true
+    }
+    ],
+    "total_duration":
+    2370,
+    "carbon_emissions":
+    {
+    "this_flight":
+    3449000,
+    "typical_for_this_route":
+    3786000,
+    "difference_percent":
+    -9
+    },
+    "price":
+    11892,
+    "type":
+    "Round trip",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "departure_token":
+    "WyJDalJJZVVsWFFtcGhOemROV1VsQlIzZ3libEZDUnkwdExTMHRMUzB0TFhaMGNYTXlORUZCUVVGQlIxcFNiblF3VEdseFJFVkJFZzFGU3pNd09YeEZTekV5TVNNeEdnc0l0TXBJRUFJYUExVlRSRGdjY0xUS1NBPT0iLFtbIlBFSyIsIjIwMjQtMDUtMjYiLCJEWEIiLG51bGwsIkVLIiwiMzA5Il0sWyJEWEIiLCIyMDI0LTA1LTI3IiwiSVNUIixudWxsLCJFSyIsIjEyMSJdXV0="
+    },
+    {
+    "flights":
+    [
+    {
+    "departure_airport":
+    {
+    "name":
+    "Beijing Capital International Airport",
+    "id":
+    "PEK",
+    "time":
+    "2024-05-26 00:40"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 05:00"
+    },
+    "duration":
+    500,
+    "airplane":
+    "Boeing 777",
+    "airline":
+    "Emirates",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "travel_class":
+    "First Class",
+    "flight_number":
+    "EK 307",
+    "extensions":
+    [
+    "Individual suite",
+    "Wi-Fi for a fee",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 2475 kg"
+    ],
+    "overnight":
+    true
+    },
+    {
+    "departure_airport":
+    {
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB",
+    "time":
+    "2024-05-26 10:45"
+    },
+    "arrival_airport":
+    {
+    "name":
+    "Istanbul Airport",
+    "id":
+    "IST",
+    "time":
+    "2024-05-26 14:25"
+    },
+    "duration":
+    280,
+    "airplane":
+    "Airbus A380",
+    "airline":
+    "Emirates",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "travel_class":
+    "First Class",
+    "flight_number":
+    "EK 123",
+    "ticket_also_sold_by":
+    [
+    "Qantas"
+    ],
+    "extensions":
+    [
+    "Individual suite",
+    "Wi-Fi for a fee",
+    "In-seat power & USB outlets",
+    "On-demand video",
+    "Carbon emissions estimate: 1346 kg"
+    ],
+    "often_delayed_by_over_30_min":
+    true
+    }
+    ],
+    "layovers":
+    [
+    {
+    "duration":
+    345,
+    "name":
+    "Dubai International Airport",
+    "id":
+    "DXB"
+    }
+    ],
+    "total_duration":
+    1125,
+    "carbon_emissions":
+    {
+    "this_flight":
+    3822000,
+    "typical_for_this_route":
+    3786000,
+    "difference_percent":
+    1
+    },
+    "price":
+    12791,
+    "type":
+    "Round trip",
+    "airline_logo":
+    "https://www.gstatic.com/flights/airline_logos/70px/EK.png",
+    "departure_token":
+    "WyJDalJJZVVsWFFtcGhOemROV1VsQlIzZ3libEZDUnkwdExTMHRMUzB0TFhaMGNYTXlORUZCUVVGQlIxcFNiblF3VEdseFJFVkJFZ3RGU3pNd04zeEZTekV5TXhvTENOU0lUaEFDR2dOVlUwUTRISERVaUU0PSIsW1siUEVLIiwiMjAyNC0wNS0yNiIsIkRYQiIsbnVsbCwiRUsiLCIzMDciXSxbIkRYQiIsIjIwMjQtMDUtMjYiLCJJU1QiLG51bGwsIkVLIiwiMTIzIl1dXQ=="
+    }
+    ]
+    }

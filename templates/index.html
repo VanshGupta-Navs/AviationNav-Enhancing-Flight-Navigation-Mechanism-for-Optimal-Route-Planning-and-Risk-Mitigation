@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Route Planner Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='script.js') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- ICONS -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        let map, routeLayer, airplaneMarker;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            map = L.map('map').setView([51.505, -0.09], 2); // Initial map view
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+            }).addTo(map);
+            routeLayer = L.layerGroup().addTo(map);
+        });
+
+        async function fetchWeather(event) {
+            event.preventDefault();
+            const cityName = document.getElementById('city_name').value;
+            const response = await fetch('/get_weather', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `city_name=${cityName}`
+            });
+            const data = await response.json();
+            displayWeather(data);
+            fetchScenarios();
+        }
+
+        function displayWeather(data) {
+            const resultDiv = document.getElementById('result');
+            if (data.error) {
+                resultDiv.innerHTML = `<p>${data.error}</p>`;
+            } else {
+                resultDiv.innerHTML = `
+                    <h2>Weather Information for ${data.country}</h2>
+                    <p><strong>Coordinates:</strong> Latitude ${data.coordinates.lat}, Longitude ${data.coordinates.lon}</p>
+                    <p><strong>Temperature:</strong> ${data.temperature}K</p>
+                    <p><strong>Pressure:</strong> ${data.pressure} hPa</p>
+                    <p><strong>Humidity:</strong> ${data.humidity}%</p>
+                    <p><strong>Sea Level:</strong> ${data.sea_level} hPa</p>
+                    <p><strong>Ground Level:</strong> ${data.ground_level} hPa</p>
+                    <p><strong>Visibility:</strong> ${data.visibility} meters</p>
+                    <p><strong>Wind Speed:</strong> ${data.wind_speed} m/s</p>
+                    <p><strong>Country:</strong> ${data.country}</p>
+                    <p><strong>Sunrise:</strong> ${new Date(data.sunrise * 1000).toLocaleTimeString()}</p>
+                    <p><strong>Sunset:</strong> ${new Date(data.sunset * 1000).toLocaleTimeString()}</p>
+                `;
+            }
+        }
+
+        async function fetchScenarios() {
+            const response = await fetch('/scenarios');
+            const scenarios = await response.json();
+            const scenariosDiv = document.getElementById('scenarios');
+            scenariosDiv.innerHTML = '';
+            const alertsDiv = document.getElementById('alerts');
+            alertsDiv.innerHTML = '';
+
+            for (const city in scenarios) {
+                const scenario = scenarios[city];
+                const p = document.createElement('p');
+                p.textContent = `${city}: ${scenario.scenario}`;
+                scenariosDiv.appendChild(p);
+
+                // Check for adverse conditions and add alerts
+                if (scenario.scenario.toLowerCase().includes('high') || scenario.scenario.toLowerCase().includes('extreme')) {
+                    showAlert(`ALERT: ${city} - ${scenario.scenario}`);
+                }
+            }
+        }
+
+        async function fetchRoute(event) {
+            event.preventDefault();
+            const start = document.getElementById('start').value;
+            const end = document.getElementById('end').value;
+            const response = await fetch('/plan_route', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `start=${start}&end=${end}`
+            });
+            const route = await response.json();
+            displayRoute(data.route);
+        }
+
+        async function fetchFlights(event) {
+            event.preventDefault();
+            const departure_city = document.getElementById('departure_city').value;
+            const arrival_city = document.getElementById('arrival_city').value;
+            const outbound_date = document.getElementById('outbound_date').value;
+            const return_date = document.getElementById('return_date').value;
+            const response = await fetch('/get_flights', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `departure_city=${departure_city}&arrival_city=${arrival_city}&outbound_date=${outbound_date}&return_date=${return_date}`
+            });
+            const data = await response.json();
+            displayFlights(data);
+        }
+        
+        function displayRoute(route) {
+            routeLayer.clearLayers();
+            const latlngs = route.map(city => [city.lat, city.lon]);
+            const routeLine = L.polyline(latlngs, { color: 'blue' }).addTo(routeLayer);
+
+            // Add airplane marker
+            if (airplaneMarker) {
+                map.removeLayer(airplaneMarker);
+            }
+            airplaneMarker = L.marker(latlngs[0], {
+                icon: L.icon({
+                    iconUrl: 'images/Plane.avif', // Replace with actual airplane icon URL
+                    iconSize: [32, 32],
+                    iconAnchor: [16, 16],
+                })
+            }).addTo(map);
+
+    // Move airplane marker along the route
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index < latlngs.length) {
+                airplaneMarker.setLatLng(latlngs[index]);
+                map.panTo(latlngs[index]);
+                index++;
+            } else {
+                clearInterval(interval);
+            }
+        }, 1000); // Adjust speed as needed
+
+        map.fitBounds(routeLine.getBounds());
+        }
+
+        function showAlert(message) {
+            const alertBox = document.createElement('div');
+            alertBox.className = 'alert-box';
+            alertBox.innerHTML = `<p>${message}</p><button onclick="closeAlert(this)">Close</button>`;
+            document.body.appendChild(alertBox);
+        }
+
+        function closeAlert(button) {
+            const alertBox = button.parentElement;
+            alertBox.style.opacity = '0';
+            setTimeout(() => alertBox.remove(), 500);
+        }
+
+        setInterval(fetchScenarios, 300000);  // Refresh scenarios every 5 minutes
+
+        function displayFlights(data) {
+            const resultDiv = document.getElementById('flight-result');
+            if (data.error) {
+                resultDiv.innerHTML = `<p>${data.error}</p>`;
+            } else {
+                resultDiv.innerHTML = `
+                    <h2>Flight Information</h2>
+                    <p><strong>Departure City:</strong> ${data.departure_city}</p>
+                    <p><strong>Arrival City:</strong> ${data.arrival_city}</p>
+                    <p><strong>Outbound Date:</strong> ${data.outbound_date}</p>
+                    <p><strong>Return Date:</strong> ${data.return_date}</p>
+                    <p><strong>Price:</strong> ${data.price} ${data.currency}</p>
+                `;
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- Flight Route Planner Container -->
+    <div class="container">
+        <h1>Flight Route Planner Dashboard</h1>
+        <form onsubmit="fetchWeather(event)">
+            <label for="city_name">City Name:</label>
+            <input type="text" id="city_name" name="city_name" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="result"></div>
+        <h2>Scenarios</h2>
+        <div id="scenarios"></div>
+        <h2>Alerts</h2>
+        <div id="alerts"></div>
+        <h2>Plan Route</h2>
+
+        <form onsubmit="fetchRoute(event)">
+            <label for="start">Start City:</label>
+            <input type="text" id="start" name="start" required>
+            <label for="end">End City:</label>
+            <input type="text" id="end" name="end" required>
+            <button type="submit">Plan Route</button>
+        </form>
+        <div id="map"></div>
+        <!-- <h2>Search Flights</h2>
+
+        <form onsubmit="fetchFlights(event)">
+            <label for="departure_city">Departure City:</label>
+            <input type="text" id="departure_city" name="departure_city" required>
+            <label for="arrival_city">Arrival City:</label>
+            <input type="text" id="arrival_city" name="arrival_city" required>
+            <label for="outbound_date">Outbound Date:</label>
+            <input type="date" id="outbound_date" name="outbound_date" required>
+            <label for="return_date">Return Date:</label>
+            <input type="date" id="return_date" name="return_date" required>
+            <button type="submit">Search Flights</button>
+        </form>
+        <div id="flight-result"></div> -->
+        <div id="map" style="height: 700px;"></div>
+    </div>
+
+
+
+    <!-- Background Image -->
+    <div class="bg"></div>
+
+    <!-- Weather Widget Container -->
+    <div class="container widget-container">
+        <div class="widget">
+            <div class="left">
+                <img src="images/cloud.svg" class="icon" alt="Weather Icon">
+                <h5 class="weather-status">Partly Cloudy</h5>
+            </div>
+            <div class="right">
+                <h5 class="city">Singapore</h5>
+                <h5 class="degree">25&#176;c</h5>
+            </div>
+            <div class="bottom">
+                <div>
+                    Wind Speed<span> 22 kmph</span>
+                </div>
+                <div>
+                    Cloud Cover<span> 22%</span>
+                </div>
+                <div>
+                    Pressure<span> 1010 mb</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <link rel="stylesheet" href="style.css" />
+
+    <div class="container">
+        <div class="sidebar">
+          <div class="menu-btn">
+            <i class="ph-bold ph-caret-left"></i>
+          </div>
+          <div class="head">
+            <div class="user-img">
+              <!-- User Image -->
+            </div>
+          </div>
+          <div class="nav">
+            <div class="menu">
+              <ul>
+                <li>
+                  <a href="#">
+                    <i class="icon ph-bold ph-house-simple"></i>
+                    <span class="text">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="icon ph-bold ph-airplane"></i>
+                    <span class="text">Plan my route</span>
+                    <i class="arrow ph-bold ph-caret-down"></i>
+                  </a>
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="#">
+                        <span class="text">Traffic</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="text">Weather</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="active">
+                  <a href="#">
+                    <i class="icon ph-bold ph-file-text"></i>
+                    <span class="text">Traffic</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="icon ph-bold ph-calendar-blank"></i>
+                    <span class="text">Schedules</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="icon ph-bold ph-status"></i>
+                    <span class="text">Status</span>
+                    <i class="arrow ph-bold ph-caret-down"></i>
+                  </a>
+                  <ul class="sub-menu">
+                    <li>
+                      <a href="#">
+                        <span class="text">Arrival time</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <span class="text">Departure time</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="menu">
+              <ul>
+                <li>
+                  <a href="#">
+                    <i class="icon ph-bold ph-info"></i>
+                    <span class="text">Help</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Jquery -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js" integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw==" crossorigin="anonymous"></script>
+      <script src="script.js"></script>
+    
+</body>
+</html>

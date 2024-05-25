@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;600&display=swap');
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+
+.bg {
+  background-image: url('../images/bg.jpg'); /* Corrected path to the image */
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(20px);
+  -webkit-filter: blur(20px);
+}
+
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.widget-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-family: 'Trebuchet MS', sans-serif;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-right: 10px;
+  align-self: center;
+  font-size: 16px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result, #scenarios, #alerts {
+  margin-top: 20px;
+}
+
+#result pre, #scenarios p, #alerts p {
+  background: #e9ecef;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alert {
+  background: #ffc107;
+  color: #333;
+  font-weight: bold;
+}
+
+.alert-box {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: #ff6b6b;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.alert-box p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.alert-box button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.widget{
+  width: 400px;
+  height: 200px;
+  border-radius: 20px;
+  background: rgba(299, 299, 299, 0.4);
+
+}
+
+.widget .left{
+position: absolute;
+left: 0;
+width: 200px;
+
+}
+
+.widget .right{
+  position: absolute;
+  right: 0;
+  width: 200px;
+  color: #0b0101;
+  margin: 50px 0;
+  
+  }
+
+  .icon{
+    width: 75%;
+    margin-bottom:-30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .weather-status{
+    color: #0c0000;
+    text-align:center;
+    margin-top:0;
+
+  }
+
+  .widget .right .city{
+    font-size: 1em;
+    text-align: center;
+    margin:0;
+    text-shadow: 1px 1px 5px #707070;
+  }
+
+  .widget .right .degree{
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    margin:0;
+    text-shadow: 1px 1px 5px #707070;
+
+
+  }
+  .widget .bottom{
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    color: #0f0101;
+  }
+
+  .widget .bottom div{
+    margin: 5px 10px 5px 10px;
+    text-align: center;
+    line-height: 100%;
+    font-size: 0.83em;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px #707070;
+
+  }
+  .bottom div span{
+    display: block;
+  }
