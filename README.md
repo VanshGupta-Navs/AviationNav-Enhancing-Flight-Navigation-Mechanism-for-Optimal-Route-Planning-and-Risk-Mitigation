@@ -71,7 +71,8 @@ This Flask application integrates weather data retrieval, scenario identificatio
     This will start the server, and the application will be accessible at `http://localhost:5000/`.
 
 2. **API Endpoints**:
-
+   - https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key
+   - https://serpapi.com/search.json?engine=google_flights&departure_id=PEK&arrival_id=AUS&outbound_date=2024-05-24&return_date=2024-05-30&currency=USD&hl=en
     - `/get_weather` (POST): Accepts a city name and returns weather information.
     - `/scenarios` (GET): Returns identified weather scenarios for stored cities.
     - `/plan_route` (POST): Accepts start and end cities, plans the optimal route considering weather conditions, and returns the route.
