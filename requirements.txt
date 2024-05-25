@@ -1,7 +1,6 @@
 flask
 requests
 pandas
-sqlite3
 math
 json
 heapq
