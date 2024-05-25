@@ -37,7 +37,7 @@ This Flask application integrates weather data retrieval, scenario identificatio
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone <repository_url>
+    git clone <https://github.com/VanshGupta-Navs/Enhancing-Flight-Navigation-Mechanism-for-Optimal-Route-Planning-and-Risk-Mitigation>
     ```
 
 2. Navigate to the project directory:
